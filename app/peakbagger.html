@@ -3,13 +3,27 @@
 </head>
 
 <body>
+    <div id="navbar">{{loginButtons}}</div>
   {{> hello}}
+  {{> your_hikes}}
   
-  {{loginButtons}}
 </body>
 
 <template name="hello">
   <h1>Hello World!</h1>
   {{greeting}}
   <input type="button" value="Click" />
+</template>
+
+<template name="your_hikes">
+    {{#if currentUser }}
+        Your hikes:
+        <ul>
+        {{#each hikes}}
+            <li>{{this}}</li>
+        {{/each}}
+        </ul>
+    {{else}}
+        Sign in to see your hikes
+    {{/if}}
 </template>
